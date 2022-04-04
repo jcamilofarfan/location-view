@@ -1,0 +1,59 @@
+<div class="card mt-4">
+  <div class="card-body">
+    <div class="card-title">
+      <h3>Location Form</h3>
+      <p>Insert a new Location</p>
+    </div>
+    <form (ngSubmit)="onSubmit()" #locationForm="ngForm">
+      <div class="form-group mt-1">
+        <input
+          type="text"
+          #name="ngModel"
+          [(ngModel)]="locationReg.name"
+          placeholder="Location Name"
+          name="name"
+          required
+          [ngClass]="{'is-valid': !name.invalid, 'is-invalid': name.invalid}"
+        />
+      </div>
+      <div class="form-group mt-1">
+        <input
+          type="number"
+          #address="ngModel"
+          [(ngModel)]="locationReg.area"
+          placeholder="Location Area"
+          name="area"
+          required
+        />
+      </div>
+      <div class="form-group mt-1">
+        <select class="form-control"
+          #name="ngModel"
+          [(ngModel)]="locationReg.parentId"
+          name="parent"
+          required
+        >
+          <option>Select a Parent Location</option>
+          <option *ngFor="let location of locations" [value]="location.id">
+            {{ location.name }}
+          </option>
+        </select>
+      </div>
+      <div class="form-check mt-1">
+        <input
+          type="checkbox"
+          class="form-check-input"
+          [(ngModel)]="locationReg.isActive"
+          name="isActive"
+          value="true"
+        >
+        <label class="form-check-label" for="defaultCheck1">
+          Child Location
+        </label>
+      </div>
+      <div class="form-group mt-2">
+        <button type="submit" [disabled]="!locationForm.valid" class="signup-btn">Guardar</button>
+      </div>
+    </form>
+  </div>
+</div>

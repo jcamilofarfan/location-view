@@ -1,0 +1,13 @@
+<div class="card bg-light mb-3" style="max-width: 18rem;">
+  <div class="card-header">
+    {{ location.name }}
+  </div>
+  <div class="card-body">
+    <p class="card-text">{{location.area}} m² </p>
+    <ul class="list-group">
+      <li *ngFor="let child of location.locationChildren" class="list-group-item list-group-item-success">
+        {{ child.name }}
+      </li>
+    </ul>
+  </div>
+</div>
